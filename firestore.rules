@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Portfolio Works (Read public, Write for CMS management)
+    match /works/{workId} {
+      allow read, write: if true;
+    }
+    
+    // Before & After Concept Pairs (Read public, Write for CMS management)
+    match /beforeAfter/{baId} {
+      allow read, write: if true;
+    }
+    
+    // 1-on-1 Strategy Call Bookings & Leads
+    match /bookings/{bookingId} {
+      allow read, write: if true;
+    }
+    
+    // Clients & Social Proof
+    match /clients/{clientId} {
+      allow read, write: if true;
+    }
+    
+    // Testimonials & Reviews
+    match /testimonials/{testimonialId} {
+      allow read, write: if true;
+    }
+    
+    // FAQs
+    match /faqs/{faqId} {
+      allow read, write: if true;
+    }
+    
+    // Global Site Settings & Pricing
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+
+    // Default fallback for any other collection
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
